@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo if/else</title>
+</head>
+
+<body>
+    <h1 id="myHeading">Texto Original</h1>
+    <button id="changeTextBtn">Mudar Texto</button>
+    <script>
+        document.getElementById('changeTextBtn').addEventListener('click', function () {
+            const heading = document.getElementById('myHeading');
+            if (heading.innerText === 'Texto Original') {
+                heading.innerText = 'Texto Modificado';
+            } else {
+                heading.innerText = 'Texto Original';
+            }
+        });
+    </script>
+</body>
+
+</html>

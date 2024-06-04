@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo if/else if/else</title>
+</head>
+
+<body>
+    <h1 id="mainHeading">Cabeçalho Principal</h1>
+    <p id="infoParagraph">Parágrafo de informação</p>
+    <button id="updateContentBtn">Atualizar Conteúdo</button>
+    <script>
+        document.getElementById('updateContentBtn').addEventListener('click', function () {
+            const heading = document.getElementById('mainHeading');
+            const paragraph = document.getElementById('infoParagraph');
+
+            if (heading.innerText === 'Cabeçalho Principal') {
+                heading.innerText = 'Cabeçalho Atualizado';
+                paragraph.innerText = 'O conteúdo foi atualizado para a primeira condição.';
+            } else if (heading.innerText === 'Cabeçalho Atualizado') {
+                heading.innerText = 'Cabeçalho Modificado Novamente';
+                paragraph.innerText = 'O conteúdo foi atualizado para a segunda condição.';
+            } else {
+                heading.innerText = 'Cabeçalho Principal';
+                paragraph.innerText = 'O conteúdo voltou ao original.';
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
