@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício 5</title>
+</head>
+<body>
+  <input type="number" id="lineNumberInput" placeholder="Digite um número">
+  <button id="showLinesBtn">Mostrar Linhas</button>
+  <ul id="lineList"></ul>
+  <script> document.getElementById('showLinesBtn').addEventListener('click', function() {
+      const number = parseInt(document.getElementById('lineNumberInput').value);
+      const list = document.getElementById('lineList');
+      list.innerHTML = '';
+
+      for (let i = 1; i <= number; i++) {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${i} ${i * i} ${i * i * i}`;
+        list.appendChild(listItem);
+      }
+    }); </script>
+</body>
+</html>

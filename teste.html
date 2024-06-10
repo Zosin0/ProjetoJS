@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumprimentar</title>
+</head>
+<body>
+    <input type="number" id="hourInput" placeholder="Digite a hora">
+    <button id="greetBtn">Cumprimentar</button>
+    <p id="greetResult"></p>
+    <script> document.getElementById('greetBtn').addEventListener('click', function () {
+            const hour = document.getElementById('hourInput').value;
+            const result = document.getElementById('greetResult');
+
+            if (hour >= 0 && hour < 6) {
+                result.innerText = `Agora são ${hour} horas. Boa Madrugada!`;
+            } else if (hour >= 6 && hour < 12) {
+                result.innerText = `Agora são ${hour} horas. Bom Dia!`;
+            } else if (hour >= 12 && hour < 18) {
+                result.innerText = `Agora são ${hour} horas. Boa Tarde!`;
+            } else if (hour >= 18 && hour <= 24) {
+                result.innerText = `Agora são ${hour} horas. Boa Noite!`;
+            } else {
+                result.innerText = 'Hora inválida!';
+            }
+        }); </script>
+</body>
+</html>

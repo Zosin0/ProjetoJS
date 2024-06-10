@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Nave</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    #gameCanvas {
+      display: block;
+      background-color: #000;
+    }
+    #score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="score">Score: 0</div>
+  <canvas id="gameCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const scoreDisplay = document.getElementById('score');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const spaceship = {
+      x: canvas.width / 2 - 25,
+      y: canvas.height - 70,
+      width: 50,
+      height: 50,
+      dx: 5,
+      color: 'white'
+    };
+
+    const obstacles = [];
+    const obstacleWidth = 50;
+    const obstacleHeight = 50;
+    let gameOver = false;
+    let score = 0;
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' && spaceship.x > 0) {
+        spaceship.x -= spaceship.dx;
+      } else if (e.key === 'ArrowRight' && spaceship.x < canvas.width - spaceship.width) {
+        spaceship.x += spaceship.dx;
+      }
+    });
+
+    function createObstacle() {
+      const obstacleX = Math.random() * (canvas.width - obstacleWidth);
+      obstacles.push({ x: obstacleX, y: 0, width: obstacleWidth, height: obstacleHeight });
+    }
+
+    function drawSpaceship() {
+      ctx.fillStyle = spaceship.color;
+      ctx.fillRect(spaceship.x, spaceship.y, spaceship.width, spaceship.height);
+    }
+
+    function drawObstacles() {
+      ctx.fillStyle = 'red';
+      obstacles.forEach(obstacle => {
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+      });
+    }
+
+    function moveObstacles() {
+      obstacles.forEach(obstacle => {
+        obstacle.y += 5;
+      });
+    }
+
+    function detectCollision() {
+      obstacles.forEach(obstacle => {
+        if (spaceship.x < obstacle.x + obstacle.width &&
+            spaceship.x + spaceship.width > obstacle.x &&
+            spaceship.y < obstacle.y + obstacle.height &&
+            spaceship.y + spaceship.height > obstacle.y) {
+          gameOver = true;
+        }
+      });
+    }
+
+    function updateScore() {
+      score++;
+      scoreDisplay.textContent = 'Score: ' + score;
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function gameLoop() {
+      clearCanvas();
+      drawSpaceship();
+      drawObstacles();
+      moveObstacles();
+      detectCollision();
+      updateScore();
+
+      if (!gameOver) {
+        requestAnimationFrame(gameLoop);
+      } else {
+        alert('Game Over! Final Score: ' + score);
+        document.location.reload();
+      }
+    }
+
+    setInterval(createObstacle, 2000); // Cria um novo obstáculo a cada 2 segundos
+    gameLoop(); // Inicia o loop do jogo
+  </script>
+</body>
+</html>
