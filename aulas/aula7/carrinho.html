@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+  <link rel="stylesheet" href="styles/accounts.css">
+</head>
+<body>
+  <h1>Carrinho de Compras</h1>
+  <div id="carrinho"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      const carrinhoDiv = document.getElementById('carrinho');
+
+      if (carrinho.length === 0) {
+        carrinhoDiv.innerHTML = '<p>Seu carrinho está vazio.</p>';
+      } else {
+        carrinhoDiv.innerHTML = '<ul>' + carrinho.map(item => `<li>${item.nome} - R$${item.preco}</li>`).join('') + '</ul>';
+      }
+    });
+  </script>
+</body>
+</html>

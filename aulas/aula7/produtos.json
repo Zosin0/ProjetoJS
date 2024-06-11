@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nome": "Leite",
+    "descricao": "Descrição do Produto 1",
+    "preco": 100.0
+  },
+  {
+    "id": 2,
+    "nome": "Arroz",
+    "descricao": "Descrição do Produto 2",
+    "preco": 200.0
+  },
+  {
+    "id": 3,
+    "nome": "Feijão",
+    "descricao": "Descrição do Produto 3",
+    "preco": 300.0
+  },
+  {
+    "id": 4,
+    "nome": "Batata",
+    "descricao": "Descrição do Produto 4",
+    "preco": 400.0
+  },
+  {
+    "id": 5,
+    "nome": "Cenoura",
+    "descricao": "Descrição do Produto 5",
+    "preco": 500.0
+  },
+  {
+    "id": 6,
+    "nome": "Tomate",
+    "descricao": "Descrição do Produto 6",
+    "preco": 600.0
+  }
+]
